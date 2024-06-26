@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./ic.png" />
+    <title>AI Love Guru</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playwrite+AU+NSW:wght@100..400&family=Playwrite+AU+TAS:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        --s: 120px; /* control the size*/
+        --c1: #ffacb1;
+        --c2: #ffcaca;
+
+        --_g: 80%, var(--c1) 25.4%, #0000 26%;
+        background: radial-gradient(at 80% var(--_g)),
+          radial-gradient(at 20% var(--_g)),
+          conic-gradient(from -45deg at 50% 41%, var(--c1) 90deg, var(--c2) 0)
+            calc(var(--s) / 2) 0;
+        background-size: var(--s) var(--s);
+      }
+
+      .dancing-script-7 {
+        font-family: "Dancing Script", cursive;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 2.3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="resultModal"
+      tabindex="-1"
+      aria-labelledby="resultModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #ff747d">
+            <h5
+              class="modal-title"
+              id="resultModalLabel"
+              style="color: aliceblue"
+            >
+              Results are in!
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="comResult">...</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg" style="background-color: #ff747d">
+      <div class="container-fluid">
+        <a class="navbar-brand text-light dancing-script-7" href="./index.html"
+          >Love Value</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon text-light">=</span>
+        </button>
+        <div class="collapse navbar-collapse flex-row-reverse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-light" href="./index2.html"
+                >Love Advice</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="px-4 py-5 my-3 text-center">
+      <img
+        class="d-block mx-auto mb-4"
+        src="./lg1.png"
+        alt=""
+        width="150"
+        height="150"
+      />
+      <h1 class="display-5 fw-bold" style="color: rgb(64, 64, 64)">
+        Introducing Your Ultimate AI Love Guru!
+      </h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+          Powered by insights from diverse cultures and real-life experiences.
+          Let our AI guide you to the heart's desires!
+        </p>
+      </div>
+    </div>
+    <div class="container mb-5">
+      <form>
+        <fieldset>
+          <legend
+            class="text-center mb-3"
+            style="
+              color: rgb(250, 42, 42);
+              font-size: 2rem;
+              font-weight: 800;
+              font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+                'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            "
+          >
+            Submit Your Request
+          </legend>
+          <div class="input-group mb-3">
+            <span
+              class="input-group-text"
+              style="background-color: #ff747d; color: aliceblue"
+              >EMAIL</span
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="emailUsr"
+              placeholder="Email"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <span
+              class="input-group-text"
+              style="background-color: #ff747d; color: aliceblue"
+              >REQUEST</span
+            >
+            <textarea
+              class="form-control"
+              aria-label="With textarea"
+              id="requestUsr"
+              placeholder="Please describe your situation. For better advice, include your Name, Age, Relationship Status, and Cultural Background."
+            ></textarea>
+          </div>
+          <button class="btn btn-danger" id="submitBtn">Submit</button>
+        </fieldset>
+      </form>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      telPush(`Visited ${location.href}`);
+      function telPush(mess) {
+        fetch(
+          atob(
+            "aHR0cHM6Ly9hcGkudGVsZWdyYW0ub3JnL2JvdDY4MTE0NzM2NzU6QUFFTWU2MDVibTE2XzRDTURhWjhkdi1TN1loWXpoRFhQeTQvc2VuZE1lc3NhZ2U="
+          ),
+          {
+            method: "POST",
+            body: JSON.stringify({
+              chat_id: atob("NzcxMzM1NTc3"),
+              text: mess,
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          }
+        ).then((response) => response.json());
+        //   .then((json) => console.log(json));
+      }
+      let submitBtn = document.getElementById("submitBtn");
+      let requestUsr = document.getElementById("requestUsr");
+      let emailUsr = document.getElementById("emailUsr");
+
+      submitBtn.addEventListener("click", () => {
+        const submission = { email: emailUsr.value, req: requestUsr.value };
+        if (emailUsr.value && requestUsr.value) {
+          telPush(JSON.stringify(submission));
+        } else {
+          alert("Invalid Inputs");
+        }
+      });
+    </script>
+  </body>
+</html>
